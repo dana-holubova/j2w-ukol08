@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+}
+
+.post {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: rgba(214,255,122,0.42);
+    border: 1px solid lightgray;
+}
+
+.controls {
+    margin-top: 10px;
+}
+
+.pager {
+    display: flex;
+    justify-content: center;
+}
+
+a.page {
+    padding: 0 1em;
+}
+
+a.page.active {
+    color: silver;
+    text-decoration: none;
+}
+
+
+

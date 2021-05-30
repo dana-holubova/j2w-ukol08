@@ -8,23 +8,18 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
-<h1>Můj blog</h1>
-<div class="post" th:each="post : ${posts}">
+    <h1>Můj blog</h1>
+<!--    TODO: Zprovoznit kaskádový styl. Netuším, proč nefunguje. -->
+<div class="post">
     <h2 th:utext="${post.title}">titulek</h2>
-    <p th:utext="${post.perex}">první odstavec</p>
+    <p th:utext="${post.perex}">text příspěvku</p>
+    <p th:utext="${post.body}">text příspěvku</p>
     <span th:utext="${#temporals.format(post.published, 'd. MMMM yyyy')}">2021</span>
     <span th:utext="${post.author}">autor</span>
-    <a th:href="@{/post/{slug}(slug=${post.slug})}">Přečíst...</a>
-
 </div>
 
-<!--    stránkování -->
-<div class="pager">
-    <a th:each="pageNumber : ${#numbers.sequence(0,posts.totalPages-1)}"
-       th:href="@{${currentURL}(size=${posts.size}, page=${pageNumber})}"
-       th:text="${pageNumber + 1}"
-       class="page"
-       th:classappend="${pageNumber==posts.number} ? 'active'"></a>
+<div class="controls">
+    <a th:href="@{/}">Zpět na seznam příspěvků</a>
 </div>
 
 </body>
