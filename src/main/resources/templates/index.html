@@ -19,6 +19,7 @@
 </div>
 
 <!--    stránkování -->
+<!--
 <div class="pager">
     <a th:each="pageNumber : ${#numbers.sequence(0,posts.totalPages-1)}"
        th:href="@{${currentURL}(size=${posts.size}, page=${pageNumber})}"
@@ -26,6 +27,19 @@
        class="page"
        th:classappend="${pageNumber==posts.number} ? 'active'"></a>
 </div>
+-->
+
+<!-- Listování příspěvky
+- Tlačítko se zobrazí, pokud metoda hasPrevious() nebo hasNext() vrací true. Tyto metody jsou z interface Page.
+- getNumber je metoda z interface Page, která vrací číslo stránky.
+-->
+<div class="pager">
+    <div class="button" th:if="${posts.hasPrevious()}"><a
+            th:href="@{${currentURL}(size=${posts.size}, page=${posts.getNumber()}-1)}">Předchozí</a></div>
+    <div class="button" th:if="${posts.hasNext()}"><a
+            th:href="@{${currentURL}(size=${posts.size}, page=${posts.getNumber()}+1)}">Další</a></div>
+</div>
+
 
 </body>
 </html>

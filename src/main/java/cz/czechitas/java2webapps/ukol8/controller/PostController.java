@@ -2,7 +2,6 @@ package cz.czechitas.java2webapps.ukol8.controller;
 
 import cz.czechitas.java2webapps.ukol8.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -30,6 +29,12 @@ public class PostController {
      */
 
 //    TODO: Nevím, jak použít PageRequest.of(0, 2); počet příspěvků na stránku jsem nastavila v @PageableDefault
+
+    /**
+     * Odpověď koučky: Takhle je já myslím v pohodě. Jinak bys prostě vytvořila Pageable page20 = PageRequest.of(0, 20); a
+     * ten pak použila jako parametr. Lépe by bylo nastavit to až v servise metodě list(), da se tam přidat i ten
+     * sorting: PageRequest.of(0, 20, Sort.by("published").descending());
+     */
     @GetMapping("/")
     public ModelAndView postList(@PageableDefault(size = 20) Pageable pageable) {
         return new ModelAndView("index")
@@ -40,11 +45,11 @@ public class PostController {
      * Metoda, která vrací jeden příspěvek
      */
 
-@GetMapping("/post/{slug}")
-public ModelAndView post(@PathVariable String slug) {
-    return new ModelAndView("post")
-            .addObject("post", postService.singlePost(slug));
-}
+    @GetMapping("/post/{slug}")
+    public ModelAndView post(@PathVariable String slug) {
+        return new ModelAndView("post")
+                .addObject("post", postService.singlePost(slug));
+    }
 
     /**
      * Získání aktuální URL s query parametry bez parametrů {@code size} a {@code page}.

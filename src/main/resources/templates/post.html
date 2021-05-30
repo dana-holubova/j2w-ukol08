@@ -5,11 +5,14 @@
     <title>Můj blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
+<!--    Styl se nenacita, protoze po vygenerovani stranek je tato stranka na adrese /post/slug, takze adresa pro -->
+<!--    soubor se stylem uz neplati, je potreba to upravit takto <link rel="stylesheet" href="css/main.css" -->
+<!--    th:href="${'../css/main.css'}">-->
+    <link rel="stylesheet" href="css/main.css" th:href="${'../css/main.css'}">
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
-    <h1>Můj blog</h1>
-<!--    TODO: Zprovoznit kaskádový styl. Netuším, proč nefunguje. -->
+<h1>Můj blog</h1>
 <div class="post">
     <h2 th:utext="${post.title}">titulek</h2>
     <p th:utext="${post.perex}">text příspěvku</p>

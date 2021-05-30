@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class PostService {
@@ -25,7 +24,6 @@ public class PostService {
     public Page<Post> list(Pageable pageable) {
         LocalDate currentDate = LocalDate.now();
         return postRepository.findByPublishedNotNullAndPublishedBeforeOrderByPublishedDesc(currentDate, pageable);
-//        return postRepository.findByPublished(currentDate, pageable);
     }
 
     /**

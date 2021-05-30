@@ -5,7 +5,7 @@ h1 {
 .post {
     margin-top: 10px;
     padding: 20px;
-    background-color: rgba(214,255,122,0.42);
+    background-color: rgba(214, 255, 122, 0.42);
     border: 1px solid lightgray;
 }
 
@@ -24,6 +24,18 @@ a.page {
 
 a.page.active {
     color: silver;
+    text-decoration: none;
+}
+
+div.button {
+    background-color: lightgray;
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 5px;
+}
+
+div.button a {
+    color: black;
     text-decoration: none;
 }
 
